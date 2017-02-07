@@ -1,0 +1,52 @@
+{% extends 'front/base.html' %}
+{% block title%}Django模板进阶-Django{% endblock %}
+
+{% block content %}
+{% include 'front/ad.html' %}
+这是学习Django模板赋值，数据操作，IF，FOR，列表，标签，过滤器的学习和使用
+<ul>
+    <li>学习赋值</li>
+    <code class="html plain">在模板中使用{{code}}显示赋值内容</code>
+    <span>{{learn_template}}</span>
+    <li>学习循环</li>
+    <span>
+        {% for tutorial in tutorial_list %}
+        {{tutorial}}
+        {% endfor %}
+    </span>
+    <li>
+        <red style="color:red">简单总结一下：一般的变量之类的用 {{code}}（变量），功能类的，比如循环，条件判断是用 {{tag}}（标签）</red>
+    </li>
+    <li>1-显示字典中内容</li>
+    <span>站点：{{ directory_list.site }} 内容：{{ directory_list.content }}</span>
+    <li>2-显示字典中内容</li>
+    <span>
+        {% for key,value in directory_list.items%}
+        {{key}}:{{value}}
+        {% endfor %}
+    </span>
+    <li>在模板进行 条件判断和 for 循环的详细操作</li>
+    <span>
+        {% for item in list_map%}
+            {{item}}
+            {% if not forloop.last %},<br/>{% endif %}
+        {% empty %}
+            抱歉，列表为空
+        {% endfor%}
+    </span>
+    <br/>
+    <span>
+        在for循环中还有很多有用的东西，如下：变量	描述<br/>
+        forloop.counter	索引从 1 开始算<br/>
+        forloop.counter0	索引从 0 开始算<br/>
+        forloop.revcounter	索引从最大长度到 1<br/>
+        forloop.revcounter0	索引从最大长度到 0<br/>
+        forloop.first	当遍历的元素为第一项时为真<br/>
+        forloop.last	当遍历的元素为最后一项时为真<br/>
+        forloop.parentloop	用在嵌套的 for 循环中，获取上一层 for 循环的 forloop<br/>
+    </span>
+    <li>
+        <a href="{{ request.path }}?{{ request.GET.urlencode }}&delete=1">当前网址加参数 delete</a>
+    </li>
+    </ul>
+{% endblock %}显示字典中内容

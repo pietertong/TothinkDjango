@@ -1,0 +1,11 @@
+{% extends 'front/base.html' %}
+{% block title%}欢迎光临首页-Django{% endblock %}
+
+{% block content %}
+{% include 'front/ad.html' %}
+这里是首页，欢迎光临
+
+
+<a href="/addparams/4/5">计算4+5</a>
+<a href="{% url 'addparams' 4 5%}">计算4+5</a>
+{% endblock %}
